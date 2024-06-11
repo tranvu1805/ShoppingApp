@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.login.LoginFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blur_background"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvAppName"
+            style="@style/h3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_80dp"
+            android:drawablePadding="@dimen/_6dp"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_logo"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvLetLogin"
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/let_s_login"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/don_t_have_an_account_register"
+            app:layout_constraintStart_toStartOf="@id/tvLetLogin"
+            app:layout_constraintTop_toBottomOf="@id/tvLetLogin" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@id/guideline90"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            style="@style/h2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_6dp"
+            android:hint="@string/pass_word"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@id/guideline90"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toBottomOf="@id/edtEmail" />
+
+        <TextView
+            android:id="@+id/tvForgetPassword"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/forget_password"
+            app:layout_constraintStart_toStartOf="@id/tvLetLogin"
+            app:layout_constraintTop_toBottomOf="@id/edtPassword" />
+
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnLogin"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="@string/login"
+            app:spinning_bar_color="@color/white"
+            android:textSize="@dimen/h3TextSize"
+            app:layout_constraintEnd_toEndOf="@id/guideline90"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toBottomOf="@id/tvForgetPassword" />
+
+        <TextView
+            android:id="@+id/tvFbLogin"
+            style="@style/h3"
+            android:padding="5dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/google_login"
+            android:drawablePadding="@dimen/_6dp"
+            android:text="@string/facebook"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_fb"
+            app:layout_constraintStart_toStartOf="@id/guideline10"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+        <TextView
+            android:id="@+id/tvGgLogin"
+            android:padding="5dp"
+            style="@style/h3"
+            android:layout_width="@dimen/_150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/google_login"
+            android:drawablePadding="@dimen/_6dp"
+            android:text="@string/google"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_gg"
+            app:layout_constraintEnd_toEndOf="@id/guideline90"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

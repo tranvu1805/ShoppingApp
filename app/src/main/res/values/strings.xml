@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Shopping App</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="intro">The Right Adress\nFor Shopping\nAny Day</string>
+    <string name="subTitle">It is very easy to find\nthe best quality among products\non the internet</string>
+    <string name="start">Start</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="let_s_login">Let\'s Login</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? <u>Register</u></string>
+    <string name="do_you_have_an_account_login">Do you have an account? <u>Login</u></string>
+    <string name="email">Email</string>
+    <string name="pass_word">Password</string>
+    <string name="forget_password"><u>Forget password?</u></string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="let_s_register">Let\'s Register</string>
+    <string name="cancel">Cancel</string>
+    <string name="send">Send</string>
+    <string name="send_to_your_email">We will sent you the password reset link to your email</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
 </resources>

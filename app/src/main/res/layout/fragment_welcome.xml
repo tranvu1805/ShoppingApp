@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.login.WelcomeFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blur_background"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvAppName"
+            style="@style/h3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_80dp"
+            android:drawablePadding="@dimen/_6dp"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvLetLogin"
+            style="@style/h4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50dp"
+            android:text="@string/intro"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30dp"
+            android:gravity="center"
+            android:text="@string/subTitle"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@id/tvLetLogin"
+            app:layout_constraintStart_toStartOf="@id/tvLetLogin"
+            app:layout_constraintTop_toBottomOf="@id/tvLetLogin" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            style="@style/blueButtonStyle"
+            android:layout_width="@dimen/_200dp"
+            android:layout_height="@dimen/_55dp"
+            android:text="@string/register"
+            android:textSize="@dimen/h3TextSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvSubTitle"
+            app:layout_constraintStart_toStartOf="@id/tvSubTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            style="@style/whiteButtonStyle"
+            android:layout_width="@dimen/_200dp"
+            android:layout_height="@dimen/_55dp"
+            android:text="@string/login"
+            android:textSize="@dimen/h3TextSize"
+            android:layout_marginTop="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="@id/tvSubTitle"
+            app:layout_constraintStart_toStartOf="@id/tvSubTitle"
+            app:layout_constraintTop_toBottomOf="@id/btnRegister" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
