@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Shopping App</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="intro">The Right Adress\nFor Shopping\nAny Day</string>
     <string name="subTitle">It is very easy to find\nthe best quality among products\non the internet</string>
@@ -22,4 +21,25 @@
     <string name="reset_password">Reset Password</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="scan_to_search">Scan to search</string>
+    <string name="search_by_voice">Search by voice</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="best_deals">Best Deals</string>
+    <string name="best_products">Best Products</string>
+    <string name="colors">Colors</string>
+    <string name="images">Images</string>
+    <string name="submit">SUBMIT</string>
+    <string name="product_general_information">Product general information:</string>
+    <string name="name">Name</string>
+    <string name="category">Category</string>
+    <string name="product_description_optional">Product description (Optional)</string>
+    <string name="price">Price</string>
+    <string name="offer_percentage_optional">Offer Percentage (Optional)</string>
+    <string name="product_details">Product details:</string>
+    <string name="product_details_hint">Sizes (Optional) | use , between each new size</string>
+    <string name="number_of_images">Number of images: %1$s</string>
 </resources>

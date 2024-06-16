@@ -1,6 +1,7 @@
 [versions]
-agp = "8.4.1"
+agp = "8.5.0"
 circleimageview = "3.1.0"
+colorpickerview = "2.2.4"
 glide = "4.16.0"
 hiltAndroid = "2.44"
 hiltAndroidCompiler = "2.50"
@@ -21,6 +22,7 @@ firebaseAuth = "23.0.0"
 navigationUiKtx = "2.7.2"
 viewpagerindicator = "1.0.0-alpha.1"
 firebaseFirestore = "25.0.0"
+firebaseStorage = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,7 @@ androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref =
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationUiKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+colorpickerview = { module = "com.github.skydoves:colorpickerview", version.ref = "colorpickerview" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
@@ -45,6 +48,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 viewpagerindicator = { module = "io.github.vejei.viewpagerindicator:viewpagerindicator", version.ref = "viewpagerindicator" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

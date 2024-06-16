@@ -20,7 +20,9 @@ import com.example.shoppingapp.dialog.setupBottomSheetDialog
 import com.example.shoppingapp.utils.Resource
 import com.example.shoppingapp.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -29,9 +31,7 @@ class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,80 +41,83 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnLogin.setOnClickListener {
-                viewModel.loginUser(
-                    edtEmail.text.toString().trim(),
-                    edtPassword.text.toString()
-                )
+                onLoginLClick()
             }
             tvSubTitle.setOnClickListener {
                 findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
             tvForgetPassword.setOnClickListener {
-                setupBottomSheetDialog { email ->
-                    viewModel.resetPassword(email)
-                }
+                onForgetPasswordClick()
             }
         }
+        observeResource(viewModel.login, ::onLoginSuccess, ::onLoginError, ::onLoginLoading)
+        observeResource(viewModel.resetPassword,
+            { onResetResponse("Reset link sent to your email") },
+            { message -> onResetResponse(message.toString()) },
+            {})
+    }
+
+
+    private fun <T> observeResource(
+        flow: Flow<Resource<T>>,
+        onSuccess: () -> Unit,
+        onError: (String?) -> Unit,
+        onLoading: () -> Unit
+    ) {
         viewLifecycleOwner.apply {
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.login.collect {
-                        when (it) {
-                            is Resource.Success -> {
-                                binding.btnLogin.revertAnimation()
-                                Intent(
-                                    requireActivity(),
-                                    ShoppingActivity::class.java
-                                ).also { intent ->
-                                    intent.addFlags(
-                                        Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                                or Intent.FLAG_ACTIVITY_NEW_TASK
-                                    )
-                                    startActivity(intent)
-                                }
-
-                            }
-
-                            is Resource.Error -> {
-                                binding.btnLogin.revertAnimation()
-                                Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG)
-                                    .show()
-                                Log.d("LoginFragment", "onViewCreated: ${it.message}")
-                            }
-
-                            is Resource.Loading -> {
-                                binding.btnLogin.startAnimation()
-                            }
-
+                    flow.collect { resource ->
+                        when (resource) {
+                            is Resource.Success -> onSuccess()
+                            is Resource.Error -> onError(resource.message.toString())
+                            is Resource.Loading -> onLoading()
                             else -> Unit
                         }
                     }
                 }
             }
         }
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.resetPassword.collect {
-                    when (it) {
-                        is Resource.Success -> {
-                            Snackbar.make(
-                                requireView(),
-                                "Reset link was sent to your email",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                        is Resource.Error -> {
-                            Snackbar.make(
-                                requireView(),
-                                "Error : ${it.message}",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
-                        is Resource.Loading -> {}
-                        else -> Unit
-                    }
-                }
-            }
+    }
+
+
+    private fun onLoginLoading() {
+        binding.btnLogin.startAnimation()
+    }
+
+    private fun onLoginError(it: String?) {
+        binding.btnLogin.revertAnimation()
+        Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        Log.d("LoginFragment", "onViewCreated: $it")
+    }
+
+    private fun onLoginSuccess() {
+        binding.btnLogin.revertAnimation()
+        Intent(
+            requireActivity(), ShoppingActivity::class.java
+        ).also { intent ->
+            intent.addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            )
+            startActivity(intent)
         }
+    }
+
+    private fun onResetResponse(message: String) {
+        Snackbar.make(
+            requireView(), message, Snackbar.LENGTH_LONG
+        ).show()
+    }
+
+    private fun onForgetPasswordClick() {
+        setupBottomSheetDialog { email ->
+            viewModel.resetPassword(email)
+        }
+    }
+
+    private fun FragmentLoginBinding.onLoginLClick() {
+        viewModel.loginUser(
+            edtEmail.text.toString().trim(), edtPassword.text.toString()
+        )
     }
 }

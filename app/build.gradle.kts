@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,12 +68,15 @@ dependencies {
     //loading button
     implementation(libs.loading.button.android)
     //viewpager indicator
-//    implementation (libs.viewpagerindicator)
+    //implementation (libs.viewpagerindicator)
     //firebase auth
     implementation(libs.firebase.auth)
-//firebase firestore
+    //firebase firestore
     implementation(libs.firebase.firestore)
-
+    //coroutine play services
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    //color picker dialog
+    implementation(libs.colorpickerview)
 }
 kapt {
     correctErrorTypes = true

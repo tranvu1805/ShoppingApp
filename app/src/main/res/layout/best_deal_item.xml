@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/g_card_background"
+    android:elevation="0dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp">
+
+        <ImageView
+            android:id="@+id/imgProductBest"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/tvProductNameBest"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Scotch Premium"
+            app:layout_constraintStart_toEndOf="@id/imgProductBest"
+            app:layout_constraintTop_toTopOf="@id/imgProductBest"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tvOldPriceBest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$2000"
+            app:layout_constraintTop_toBottomOf="@id/tvProductNameBest"
+            app:layout_constraintStart_toEndOf="@id/tvNewPriceBest"
+            android:textColor="@color/g_gray700"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display"
+            android:layout_marginStart="8dp"
+            />
+
+        <TextView
+            android:id="@+id/tvNewPriceBest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1600"
+            app:layout_constraintStart_toStartOf="@id/tvProductNameBest"
+            app:layout_constraintTop_toBottomOf="@id/tvProductNameBest"
+
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_display"/>
+
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnSeeProduct"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:background="@drawable/blue_background"
+            android:fontFamily="@font/poppins_light"
+            android:text="See product"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvProductNameBest"
+            app:layout_constraintTop_toTopOf="@id/tvProductNameBest"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
