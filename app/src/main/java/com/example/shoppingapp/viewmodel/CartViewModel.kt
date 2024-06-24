@@ -102,7 +102,6 @@ class CartViewModel @Inject constructor(
     }
 
     private fun increaseProductQuantity(documentId: String) {
-
         onLoading()
         firebaseUtils.increaseProductQuantity(documentId) { _, exception ->
             handleException(exception)
