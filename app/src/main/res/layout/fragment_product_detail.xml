@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragments.shopping.product.ProductDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvProductDetail"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_20dp"
+            app:cardCornerRadius="@dimen/_10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:contentDescription="@string/close"
+                android:padding="5dp"
+                android:src="@drawable/ic_close" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/layoutProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/cvProductDetail"
+            app:layout_constraintStart_toStartOf="@id/cvProductDetail"
+            app:layout_constraintTop_toBottomOf="@id/cvProductDetail">
+
+            <TextView
+                android:id="@+id/tvProductName"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/name"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvProductNewPrice"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/price"
+                android:textColor="@color/g_gray700"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvProductOldPrice"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/price"
+                android:textColor="@color/g_gray700"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvProductCategory"
+            style="@style/h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/category"
+            android:textColor="@color/g_black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/layoutProductName"
+            app:layout_constraintTop_toBottomOf="@id/layoutProductName" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_6dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="@id/layoutProductName"
+            app:layout_constraintStart_toStartOf="@id/layoutProductName"
+            app:layout_constraintTop_toBottomOf="@id/tvProductCategory" />
+
+        <RelativeLayout
+            android:id="@+id/layoutSizes"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:gravity="fill_horizontal"
+            app:layout_constraintEnd_toEndOf="@id/layoutProductName"
+            app:layout_constraintStart_toStartOf="@id/layoutProductName"
+            app:layout_constraintTop_toBottomOf="@id/line">
+
+            <TextView
+                android:id="@+id/tvColor"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignEnd="@id/middleLine"
+                android:gravity="center_horizontal"
+                android:text="@string/colors"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvColors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvColor"
+                android:layout_alignEnd="@+id/middleLine"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp" />
+
+            <View
+                android:id="@+id/middleLine"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvSize"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/middleLine"
+                android:gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/size"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSizes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSize"
+                android:layout_alignStart="@id/middleLine"
+                android:layout_alignEnd="@+id/tvSize"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp" />
+        </RelativeLayout>
+
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnAddToCart"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginBottom="@dimen/_6dp"
+            android:text="@string/add_to_cart"
+            android:textSize="@dimen/h3TextSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/layoutProductName"
+            app:layout_constraintStart_toStartOf="@id/layoutProductName"
+            app:layout_constraintTop_toBottomOf="@id/layoutSizes"
+            app:spinning_bar_color="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

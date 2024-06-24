@@ -1,5 +1,10 @@
 package com.example.shoppingapp.dependenceinjection
 
+import android.app.Application
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
+import com.example.shoppingapp.firebase.FirebaseUtils
+import com.example.shoppingapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -32,4 +37,19 @@ object AppModule {
     @Singleton
     fun provideStorageReference(): StorageReference = Firebase.storage.reference
 
+    @Provides
+    @Singleton
+    fun provideSharePreferences(application: Application): SharedPreferences {
+        return application.getSharedPreferences(
+            Constants.INTRODUCTION_SHARED_PREFERENCES,
+            MODE_PRIVATE
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseUtils(
+        fireStore: FirebaseFirestore,
+        auth: FirebaseAuth,
+    ) = FirebaseUtils(fireStore, auth)
 }

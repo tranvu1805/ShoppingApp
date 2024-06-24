@@ -19,7 +19,6 @@ import com.example.shoppingapp.utils.RegisterValidation
 import com.example.shoppingapp.utils.Resource
 import com.example.shoppingapp.viewmodel.RegisterViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -50,21 +49,20 @@ class RegisterFragment : Fragment() {
             }
         }
         observeResource(viewModel.register, ::onSuccess, ::onError, ::onLoading)
-        viewLifecycleOwner.apply {
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.validation.collect {
-                        if (it.email is RegisterValidation.Failed) {
-                            handleFieldError(binding.edtEmail, it.email.message)
-                        }
-                        if (it.password is RegisterValidation.Failed) {
-                            handleFieldError(binding.edtPassword, it.password.message)
-                        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.validation.collect {
+                    if (it.email is RegisterValidation.Failed) {
+                        handleFieldError(binding.edtEmail, it.email.message)
+                    }
+                    if (it.password is RegisterValidation.Failed) {
+                        handleFieldError(binding.edtPassword, it.password.message)
                     }
                 }
             }
         }
     }
+
     private suspend fun handleFieldError(field: View, errorMessage: String) {
         withContext(Dispatchers.Main) {
             when (field) {
@@ -74,26 +72,26 @@ class RegisterFragment : Fragment() {
                         error = errorMessage
                     }
                 }
+
                 else -> {}
             }
         }
     }
+
     private fun <T> observeResource(
         flow: Flow<Resource<T>>,
         onSuccess: (Resource<T>) -> Unit,
         onError: (String?) -> Unit,
         onLoading: () -> Unit
     ) {
-        viewLifecycleOwner.apply {
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    flow.collect { resource ->
-                        when (resource) {
-                            is Resource.Success -> onSuccess(resource)
-                            is Resource.Error -> onError(resource.message.toString())
-                            is Resource.Loading -> onLoading()
-                            else -> Unit
-                        }
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flow.collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> onSuccess(resource)
+                        is Resource.Error -> onError(resource.message.toString())
+                        is Resource.Loading -> onLoading()
+                        else -> Unit
                     }
                 }
             }
@@ -122,6 +120,7 @@ class RegisterFragment : Fragment() {
             requireView(), message, Snackbar.LENGTH_LONG
         ).show()
     }
+
     private fun FragmentRegisterBinding.onRegisterClick() {
         val user = User(
             edtFirstName.text.toString().trim(),

@@ -7,14 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shoppingapp.adapter.home.HomeViewPagerAdapter
 import com.example.shoppingapp.databinding.FragmentHomeBinding
+import com.example.shoppingapp.fragments.shopping.category.AccessoryFragment
+import com.example.shoppingapp.fragments.shopping.category.ChairFragment
+import com.example.shoppingapp.fragments.shopping.category.CupboardFragment
+import com.example.shoppingapp.fragments.shopping.category.HomeCategoryFragment
+import com.example.shoppingapp.fragments.shopping.category.TableFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var categories: List<ArrayList<String>>
+    private lateinit var categories: ArrayList<Fragment>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -22,20 +28,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        categories = listOf(
-            arrayListOf("Item 1.1", "Item 1.2", "Item 1.3"),
-            arrayListOf("Item 2.1", "Item 2.2", "Item 2.3"),
-            arrayListOf("Item 3.1", "Item 3.2", "Item 3.3")
-        )
+        categories = arrayListOf(
+            HomeCategoryFragment(),
+            ChairFragment(),
+            CupboardFragment(),
+            TableFragment(),
+            AccessoryFragment(),
+            )
         val viewPagerAdapter = HomeViewPagerAdapter(categories, childFragmentManager, lifecycle)
         binding.viewPager.adapter = viewPagerAdapter
+        binding.viewPager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabHome, binding.viewPager) { tab, position ->
-           when(position){
-               0 -> tab.text = "Home"
-               1 -> tab.text = "Chair"
-               2 -> tab.text = "Cupboard"
-           }
+            when (position) {
+                0 -> tab.text = "Home"
+                1 -> tab.text = "Chair"
+                2 -> tab.text = "Cupboard"
+                3 -> tab.text = "Table"
+                4 -> tab.text = "Accessory"
+            }
         }.attach()
+
     }
 
 }

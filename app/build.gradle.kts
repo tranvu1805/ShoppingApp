@@ -67,14 +67,12 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     //loading button
     implementation(libs.loading.button.android)
-    //viewpager indicator
-    //implementation (libs.viewpagerindicator)
     //firebase auth
     implementation(libs.firebase.auth)
     //firebase firestore
     implementation(libs.firebase.firestore)
     //coroutine play services
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    implementation(libs.kotlinx.coroutines.play.services)
     //color picker dialog
     implementation(libs.colorpickerview)
 }

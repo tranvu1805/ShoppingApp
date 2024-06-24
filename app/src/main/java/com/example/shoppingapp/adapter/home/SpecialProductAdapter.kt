@@ -11,8 +11,10 @@ import com.example.shoppingapp.databinding.SpecialItemBinding
 
 class SpecialProductAdapter :
     RecyclerView.Adapter<SpecialProductAdapter.SpecialProductViewHolder>() {
+    var onItemClickListener: ((Product) -> Unit)? = null
+
     inner class SpecialProductViewHolder(
-        private val binding: SpecialItemBinding
+        private val binding: SpecialItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bindItem(product: Product) {
             binding.apply {
@@ -48,5 +50,8 @@ class SpecialProductAdapter :
     override fun onBindViewHolder(holder: SpecialProductViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bindItem(product)
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(product)
+        }
     }
 }

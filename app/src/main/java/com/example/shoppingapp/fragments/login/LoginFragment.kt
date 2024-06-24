@@ -20,7 +20,6 @@ import com.example.shoppingapp.dialog.setupBottomSheetDialog
 import com.example.shoppingapp.utils.Resource
 import com.example.shoppingapp.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -64,16 +63,14 @@ class LoginFragment : Fragment() {
         onError: (String?) -> Unit,
         onLoading: () -> Unit
     ) {
-        viewLifecycleOwner.apply {
-            lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    flow.collect { resource ->
-                        when (resource) {
-                            is Resource.Success -> onSuccess()
-                            is Resource.Error -> onError(resource.message.toString())
-                            is Resource.Loading -> onLoading()
-                            else -> Unit
-                        }
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flow.collect { resource ->
+                    when (resource) {
+                        is Resource.Success -> onSuccess()
+                        is Resource.Error -> onError(resource.message.toString())
+                        is Resource.Loading -> onLoading()
+                        else -> Unit
                     }
                 }
             }
