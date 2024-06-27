@@ -2,7 +2,6 @@ package com.example.shoppingapp.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.ActivityManageBinding
 import dagger.hilt.android.AndroidEntryPoint
 

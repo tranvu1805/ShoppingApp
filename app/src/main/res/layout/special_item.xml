@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="230dp"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/g_card_background"
@@ -34,7 +35,8 @@
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/imgProductSpecial"
-            app:layout_constraintTop_toTopOf="@id/imgProductSpecial" />
+            app:layout_constraintTop_toTopOf="@id/imgProductSpecial"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tvProductPrice"
@@ -45,12 +47,13 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/tvProductName"
-            app:layout_constraintTop_toBottomOf="@id/tvProductName" />
+            app:layout_constraintTop_toBottomOf="@id/tvProductName"
+            tools:ignore="HardcodedText" />
 
         <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btnAddToCart"
             android:layout_width="110dp"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/blue_background"
             android:fontFamily="@font/poppins_light"

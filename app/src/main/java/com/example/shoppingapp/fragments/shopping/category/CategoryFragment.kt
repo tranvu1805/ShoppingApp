@@ -13,7 +13,6 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.adapter.home.BestProductAdapter
 import com.example.shoppingapp.adapter.home.SpecialProductAdapter
 import com.example.shoppingapp.databinding.FragmentCategoryBinding
-import dagger.hilt.android.AndroidEntryPoint
 
 
 open class CategoryFragment : Fragment(R.layout.fragment_category) {

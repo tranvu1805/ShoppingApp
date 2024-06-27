@@ -50,4 +50,27 @@
     <string name="your_shopping_cart_is_empty">Your shopping cart is empty</string>
     <string name="my_cart">My Cart</string>
     <string name="_150">$150</string>
+    <string name="address">Address</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="address_location">Address location</string>
+    <string name="city">City</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone</string>
+    <string name="street">Street</string>
+    <string name="state">State</string>
+    <string name="see_product">See product</string>
+    <string name="forgot_change_password">Forgot/Change password</string>
+    <string name="my_account">My account</string>
+    <string name="all_orders">All orders</string>
+    <string name="no_orders_to_show">No orders to show</string>
+    <string name="chair">Chair</string>
+    <string name="order_id">Order: #%1$s</string>
+    <string name="address_detail">%1$s, %2$s, %3$s</string>
+    <string name="settings">Settings</string>
+    <string name="edit_personal_details">Edit personal details</string>
+    <string name="orders">Orders</string>
+    <string name="notifications">Notifications</string>
+    <string name="billing">Billing</string>
+    <string name="logout">Logout</string>
 </resources>

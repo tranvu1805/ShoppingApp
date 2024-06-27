@@ -37,7 +37,8 @@
                 android:layout_marginTop="10dp"
                 android:hint="@string/name"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/black" />
 
 
             <EditText
@@ -47,7 +48,8 @@
                 android:layout_marginVertical="@dimen/_6dp"
                 android:hint="@string/category"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/edDescription"
@@ -55,7 +57,8 @@
                 android:layout_height="48dp"
                 android:hint="@string/product_description_optional"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/edPrice"
@@ -64,7 +67,8 @@
                 android:layout_marginVertical="@dimen/_6dp"
                 android:hint="@string/price"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/edOfferPercentage"
@@ -72,7 +76,8 @@
                 android:layout_height="48dp"
                 android:hint="@string/offer_percentage_optional"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColorHint="@color/black" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -101,7 +106,8 @@
                 android:layout_height="48dp"
                 android:hint="@string/product_details_hint"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColorHint="@color/black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -161,9 +167,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20dp"
-                android:paddingVertical="@dimen/_6dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingVertical="@dimen/_6dp">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSubmit"
@@ -197,12 +203,12 @@
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:layout_marginTop="@dimen/_10dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutDetails"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutDetails" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

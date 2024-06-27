@@ -15,11 +15,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.data.Product
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -33,7 +29,7 @@ import javax.inject.Inject
 class AddProductViewModel @Inject constructor(
     application: Application,
     private val firestore: FirebaseFirestore,
-    private val firebaseStorage: StorageReference
+    private val firebaseStorage: StorageReference,
 ) : AndroidViewModel(application) {
     private val _selectedImages = MutableLiveData<MutableList<Uri>>(mutableListOf())
     val selectedImages: LiveData<MutableList<Uri>> = _selectedImages
@@ -74,7 +70,7 @@ class AddProductViewModel @Inject constructor(
         description: String,
         sizes: String,
         offerPercentage: String,
-        onResult: (Boolean) -> Unit
+        onResult: (Boolean) -> Unit,
     ) {
         val size = getSizeList(sizes)
         val images = mutableListOf<String>()

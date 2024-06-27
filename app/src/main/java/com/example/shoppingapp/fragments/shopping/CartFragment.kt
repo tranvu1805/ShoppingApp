@@ -1,6 +1,5 @@
 package com.example.shoppingapp.fragments.shopping
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +16,7 @@ import com.example.shoppingapp.R
 import com.example.shoppingapp.adapter.cart.CartAdapter
 import com.example.shoppingapp.data.Cart
 import com.example.shoppingapp.databinding.FragmentCartBinding
+import com.example.shoppingapp.dialog.showConfirmationDialog
 import com.example.shoppingapp.firebase.FirebaseUtils
 import com.example.shoppingapp.utils.Resource
 import com.example.shoppingapp.viewmodel.CartViewModel
@@ -27,7 +27,7 @@ class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
     private val viewModel: CartViewModel by activityViewModels()
     private val cartAdapter by lazy { CartAdapter(requireContext()) }
-
+    private var total = 0f
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -38,6 +38,7 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupCartAdapter()
         cartAdapter.onItemClickListener = {
             onItemClick(it)
@@ -48,24 +49,25 @@ class CartFragment : Fragment() {
         cartAdapter.onDecreaseClickListener = {
             viewModel.changeQuantity(it, FirebaseUtils.ChangingState.DECREASE)
         }
+        binding.btnCheckOut.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToBillFragment(
+                total,
+                cartAdapter.differ.currentList.toTypedArray()
+            )
+            findNavController().navigate(action)
+        }
         calculatePriceOnFlow()
         flowCollect()
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.deleteFlow.collectLatest {
-                    val alert = AlertDialog.Builder(requireContext()).apply {
-                        setTitle("Delete")
-                        setMessage("Do you want to delete this product?")
-                        setPositiveButton("Yes") { dialog, _ ->
+                    requireContext().showConfirmationDialog(
+                        title = "Delete",
+                        message = "Do you want to delete this product?",
+                        onPositiveClick = {
                             viewModel.deleteProduct(it)
-                            dialog.dismiss()
                         }
-                        setNegativeButton("No") { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                    }
-                    alert.create()
-                    alert.show()
+                    )
                 }
             }
         }
@@ -106,7 +108,10 @@ class CartFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.totalPrice.collectLatest {
-                    binding.tvTotalPrice.text = getString(R.string.price_format, it)
+                    binding.tvTotalPrice.text = getString(R.string.price_format, it.toString())
+                    it?.let {
+                        total = it
+                    }
                 }
             }
         }

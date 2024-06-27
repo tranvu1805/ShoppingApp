@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class AddProductFragment : Fragment() {
     private lateinit var selectImagesActivityResult: ActivityResultLauncher<Intent>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentAddProductBinding.inflate(inflater, container, false)
         return binding.root
@@ -58,12 +57,12 @@ class AddProductFragment : Fragment() {
     }
 
     private fun onClickSubmit() {
-        val checkInput= viewModel.validation(
+        val checkInput = viewModel.validation(
             binding.edName.text.toString(),
             binding.edPrice.text.toString(),
             binding.edCategory.text.toString()
         )
-        if (checkInput){
+        if (checkInput) {
             viewModel.saveProduct(
                 binding.edName.text.toString(),
                 binding.edPrice.text.toString(),
@@ -71,12 +70,14 @@ class AddProductFragment : Fragment() {
                 binding.edDescription.text.toString(),
                 binding.edSizes.text.toString(),
                 binding.edOfferPercentage.text.toString()
-            ){
-               if (it){
-                   Snackbar.make(binding.root, "Product added successfully", Snackbar.LENGTH_SHORT).show()
-               }else{
-                   Snackbar.make(binding.root, "Error adding product", Snackbar.LENGTH_SHORT).show()
-               }
+            ) {
+                if (it) {
+                    Snackbar.make(binding.root, "Product added successfully", Snackbar.LENGTH_SHORT)
+                        .show()
+                } else {
+                    Snackbar.make(binding.root, "Error adding product", Snackbar.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
     }

@@ -26,7 +26,7 @@ class IntroductionFragment : Fragment() {
     private val viewModel: IntroductionViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentIntroductionBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,7 +38,7 @@ class IntroductionFragment : Fragment() {
             viewModel.startButtonClick()
             findNavController().navigate(R.id.action_introductionFragment_to_welcomeFragment)
         }
-        observedNavigation();
+        observedNavigation()
     }
 
     private fun observedNavigation() {

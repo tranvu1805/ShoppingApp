@@ -30,17 +30,17 @@ class CartViewModel @Inject constructor(
     val totalPrice = cartProduct.map {
         when (it) {
             is Resource.Success -> calculateTotalPrice(it.data!!)
-            else -> {}
+            else -> null
         }
     }
 
     private val _deleteFlow = MutableSharedFlow<Cart>()
     val deleteFlow = _deleteFlow.asSharedFlow()
 
-    private fun calculateTotalPrice(data: List<Cart>): Double {
+    private fun calculateTotalPrice(data: List<Cart>): Float {
         return data.sumOf {
             (it.product.offerPercentage.getProductPrice(it.product.price) * it.quantity).toDouble()
-        }
+        }.toFloat()
     }
 
     init {

@@ -75,6 +75,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.play.services)
     //color picker dialog
     implementation(libs.colorpickerview)
+    //step view
+    implementation (libs.stepview)
 }
 kapt {
     correctErrorTypes = true

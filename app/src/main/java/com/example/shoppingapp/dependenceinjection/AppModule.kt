@@ -33,6 +33,7 @@ object AppModule {
     @Singleton
     fun provideFirebaseStorage(): FirebaseStorage = FirebaseStorage.getInstance()
 
+
     @Provides
     @Singleton
     fun provideStorageReference(): StorageReference = Firebase.storage.reference

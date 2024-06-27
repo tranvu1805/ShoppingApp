@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class IntroductionViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences,
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
 ) : ViewModel() {
     private val _navigation = MutableStateFlow(0)
     val navigation get() = _navigation
