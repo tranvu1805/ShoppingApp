@@ -56,6 +56,9 @@ class CartFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
+        binding.imageCloseCart.setOnClickListener {
+            findNavController().navigateUp()
+        }
         calculatePriceOnFlow()
         flowCollect()
         lifecycleScope.launch {

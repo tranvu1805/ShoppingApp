@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -52,8 +53,15 @@ class ProfileFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
+        binding.linearAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_addProductFragment)
+        }
         onLogoutClick()
         binding.tvVersion.text = "Version ${BuildConfig.VERSION_NAME}"
+        flowCollect()
+    }
+
+    private fun flowCollect() {
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.user.collectLatest {
@@ -71,7 +79,7 @@ class ProfileFragment : Fragment() {
                         }
 
                         is Resource.Error -> {
-                            binding.progressbarSettings.visibility = View.VISIBLE
+                            binding.progressbarSettings.visibility = View.GONE
                             Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                         }
 

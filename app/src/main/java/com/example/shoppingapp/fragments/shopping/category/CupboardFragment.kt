@@ -1,19 +1,13 @@
 package com.example.shoppingapp.fragments.shopping.category
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.shoppingapp.R
+import com.example.shoppingapp.data.Category
+import dagger.hilt.android.AndroidEntryPoint
 
-class CupboardFragment : CategoryFragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cupboard, container, false)
+@AndroidEntryPoint
+class CupboardFragment : com.example.shoppingapp.fragments.shopping.category.CategoryFragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        category = Category.Cupboard
     }
-
 }

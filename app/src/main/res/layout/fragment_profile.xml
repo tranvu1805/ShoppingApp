@@ -287,6 +287,60 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tvAddProduct"
+                style="@style/MediumTextViewThin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/add_product"
+                android:textColor="@color/g_gray700"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
+
+            <LinearLayout
+                android:id="@+id/linearAdd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/search_box_background"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toBottomOf="@id/tvAddProduct">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/settings_items_background"
+                    android:backgroundTint="#4cd964"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_add_circle"
+                    app:tint="@color/white" />
+
+                <TextView
+                    style="@style/MediumTextViewThin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:text="@string/add_product"
+                    android:textColor="@color/g_gray700"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_arrow"
+                    app:tint="@color/black" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvRegional"
@@ -298,7 +352,7 @@
                 android:textColor="@color/g_gray700"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
-                app:layout_constraintTop_toBottomOf="@id/linearNotifications"
+                app:layout_constraintTop_toBottomOf="@id/linearAdd"
                 tools:ignore="HardcodedText" />
 
             <LinearLayout

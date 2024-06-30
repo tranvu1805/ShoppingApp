@@ -22,6 +22,9 @@ class SpecialProductAdapter :
                 tvProductName.text = product.name
                 tvProductPrice.text = product.price.toString()
             }
+            binding.btnAddToCart.setOnClickListener {
+                onItemClickListener?.invoke(product)
+            }
         }
     }
 

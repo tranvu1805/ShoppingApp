@@ -57,7 +57,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/blue_background"
             android:fontFamily="@font/poppins_light"
-            android:text="@string/add_to_cart"
+            android:text="@string/view_details"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15sp"

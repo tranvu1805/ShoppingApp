@@ -9,7 +9,7 @@ import com.example.shoppingapp.adapter.home.HomeViewPagerAdapter
 import com.example.shoppingapp.databinding.FragmentHomeBinding
 import com.example.shoppingapp.fragments.shopping.category.AccessoryFragment
 import com.example.shoppingapp.fragments.shopping.category.ChairFragment
-import com.example.shoppingapp.fragments.shopping.category.CupboardFragment
+import com.example.shoppingapp.fragments.shopping.category.FurnitureFragment
 import com.example.shoppingapp.fragments.shopping.category.HomeCategoryFragment
 import com.example.shoppingapp.fragments.shopping.category.TableFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -31,10 +31,10 @@ class HomeFragment : Fragment() {
         categories = arrayListOf(
             HomeCategoryFragment(),
             ChairFragment(),
-            CupboardFragment(),
             TableFragment(),
-            AccessoryFragment(),
-            )
+            FurnitureFragment(),
+            AccessoryFragment()
+        )
         val viewPagerAdapter = HomeViewPagerAdapter(categories, childFragmentManager, lifecycle)
         binding.viewPager.adapter = viewPagerAdapter
         binding.viewPager.isUserInputEnabled = false
@@ -42,8 +42,8 @@ class HomeFragment : Fragment() {
             when (position) {
                 0 -> tab.text = "Home"
                 1 -> tab.text = "Chair"
-                2 -> tab.text = "Cupboard"
-                3 -> tab.text = "Table"
+                2 -> tab.text = "Table"
+                3 -> tab.text = "Furniture"
                 4 -> tab.text = "Accessory"
             }
         }.attach()

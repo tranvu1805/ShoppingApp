@@ -94,6 +94,7 @@ class HomeCategoryFragment : Fragment() {
         bestDealAdapter.onItemClickListener = {
             onItemClick(it)
         }
+
     }
 
     private fun onItemClick(it: Product) {

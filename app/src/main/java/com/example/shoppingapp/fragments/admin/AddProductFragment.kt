@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.shoppingapp.R
 import com.example.shoppingapp.databinding.FragmentAddProductBinding
 import com.example.shoppingapp.viewmodel.AddProductViewModel
@@ -53,6 +54,9 @@ class AddProductFragment : Fragment() {
         }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) showLoading() else hideLoading()
+        }
+        binding.imgClose.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

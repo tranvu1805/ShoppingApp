@@ -89,6 +89,9 @@ class BillFragment : Fragment() {
                 showConfirmationDialog()
             }
         }
+        binding.imageCloseBilling.setOnClickListener {
+            findNavController().navigateUp()
+        }
         observeResource(viewModel.address,
             onLoading = { binding.progressbarAddress.visibility = View.VISIBLE },
             onSuccess = {

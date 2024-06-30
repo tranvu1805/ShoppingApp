@@ -1,23 +1,26 @@
 package com.example.shoppingapp.fragments.shopping.category
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.shoppingapp.R
+import com.example.shoppingapp.data.Category
+import com.example.shoppingapp.databinding.FragmentCategoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FurnitureFragment : CategoryFragment() {
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_furniture, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        category = Category.Furniture
     }
 
+    override fun onOfferPagingRequest() {
+
+    }
+
+    override fun onBestPagingRequest() {
+
+    }
 
 }
